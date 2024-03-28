@@ -1,0 +1,23 @@
+# Telegraf Configuration
+
+# Agent Configuration
+[agent]
+  interval = "1s"
+  round_interval = true
+  metric_batch_size = 1000
+  metric_buffer_limit = 10000
+  collection_jitter = "0s"
+  flush_interval = "1s"
+  flush_jitter = "0s"
+  precision = ""
+  hostname = "x13"
+  omit_hostname = false
+
+# Input Configuration
+[[inputs.execd]]
+  command = ["/tmp/input_plugin"]
+  signal = "SIGHUP"
+
+[[outputs.execd]]
+  command = ["/tmp/output_plugin"]
+  data_format = "influx"

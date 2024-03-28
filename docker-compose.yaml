@@ -1,0 +1,37 @@
+version: "3"
+
+services:
+  redis:
+      container_name: "${PROJECT_NAME}_redis"
+      ports: 
+        - "6379:6379"
+      image: redis
+
+  # PkmCNDJEUTJoiYIygpR2JKZPiCF6f5vgvreLp0r2QtXC-GKoiboVK0739u5lAZkmjVjxDR-aSKm2snP-9xavIA==
+  influxdb2:
+      container_name: "${PROJECT_NAME}_influxdb2"
+      ports:
+        - "8086:8086"
+        - "8088:8088"
+      image: "influxdb:latest"
+
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: henry
+      POSTGRES_PASSWORD: gsx
+      POSTGRES_DB: metrics
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./docker/postgres/:/docker-entrypoint-initdb.d
+
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "info@mdo-ito.de"
+      PGADMIN_DEFAULT_PASSWORD: "gsx"
+    ports:
+      - "8080:80"
