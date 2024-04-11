@@ -23,7 +23,7 @@ func main() {
     }
 
     tags := map[string][]string{
-        "Maschinen.PM1_Daten.Maschine.Auftragsdaten.Auftragsnummer": {"0","69930","69931"},
+        "Maschinen.PM1_Daten.Maschine.Auftragsdaten.Auftragsnummer": {"1","2","3","4","5","0"},
         "Maschinen.PM1_Daten.Maschine.Auftragsdaten.Artikelbezeichnung": {"0","Foobar1","Foobar2"},
         "Maschinen.PM1_Daten.Maschine.Auftragsdaten.Charge": {"0","FBA1","FBA2"},
         "Maschinen.PM1_Daten.Maschine.Auftragsdaten.Fertigungsschritt": {"0","60","70"},
@@ -39,7 +39,7 @@ func main() {
             }
             tagCh <- buffer
             counter++
-            time.Sleep(20 * time.Second)
+            time.Sleep(5 * time.Second)
         }
     }()
 
@@ -54,9 +54,9 @@ func main() {
                 fmt.Printf("%s",enc.Bytes())
             }
         default:
-            publishMetrics(metrics,10)
+            publishMetrics(metrics,3)
         }
-        publishMetrics(metrics,10)
+        publishMetrics(metrics,3)
     }
 }
 

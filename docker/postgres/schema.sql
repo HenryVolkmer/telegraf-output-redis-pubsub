@@ -25,7 +25,7 @@ SET default_table_access_method = heap;
 --
 
 CREATE TABLE public.acue_opcua_metrics (
-    id uuid NOT NULL,
+    id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
     title character varying(250),
     value numeric,
     measurement character varying(250),

@@ -7,14 +7,6 @@ services:
         - "6379:6379"
       image: redis
 
-  # PkmCNDJEUTJoiYIygpR2JKZPiCF6f5vgvreLp0r2QtXC-GKoiboVK0739u5lAZkmjVjxDR-aSKm2snP-9xavIA==
-  influxdb2:
-      container_name: "${PROJECT_NAME}_influxdb2"
-      ports:
-        - "8086:8086"
-        - "8088:8088"
-      image: "influxdb:latest"
-
   postgres:
     image: postgres
     restart: always
